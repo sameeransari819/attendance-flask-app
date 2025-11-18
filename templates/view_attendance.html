@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/view_attendance.css') }}">
+    <title>Attendance Records</title>
+</head>
+<body>
+       <header>
+        <div class="header">
+            <h1><a class="header" href="/">HOME</a></h1>         
+        </div>
+    </header>
+
+    <h2>📋 Attendance Records</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Subject</th>
+        </tr>
+        {% for row in attendance %}
+        <tr>
+            <td data-label="ID">{{ row[0] }}</td>
+            <td data-label="Name">{{ row[1] }}</td>
+            <td data-label="Date">{{ row[2] }}</td>
+            <td data-label="Time">{{ row[3] }}</td>
+            <td data-label = "Subject">{{ row[4] }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

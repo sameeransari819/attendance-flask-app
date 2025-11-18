@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Timetable</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_timetable.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1>Edit Timetable</h1>
+            <button id="back"><a href="/timetable">Back</a></button>
+        </div>
+    </header>
+
+    <main>
+        <form action="/edit_timetable/{{ data[0] }}" method="POST">
+            <label>Day</label>
+            <select name="day" required>
+                {% set days = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"] %}
+                {% for d in days %}
+                    <option value="{{ d }}" {% if data[5] == d %}selected{% endif %}>{{ d }}</option>
+                {% endfor %}
+            </select>
+
+            <label>Subject</label>
+            <input type="text" name="subject" value="{{ data[1] }}" required>
+
+            <label>Start Time</label>
+            <input type="time" name="start_time" value="{{ data[2] }}" required>
+
+            <label>End Time</label>
+            <input type="time" name="end_time" value="{{ data[3] }}" required>
+
+            <label>Branch</label>
+            <input type="text" name="branch" value="{{ data[4] }}" required>
+
+            <input type="submit" value="Update Timetable">
+        </form>
+    </main>
+</body>
+</html>

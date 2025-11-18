@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Student</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/edit.css') }}">
+</head>
+<body>
+        <header>
+        <div class="header">
+            <h1><a href="/">Edit Student</a></h1>
+            <button id="back"><a href="/students">Back</a></button>            
+        </div>
+    </header>
+
+    <main>
+        <form action="/edit/{{ student[0] }}" method="POST" enctype="multipart/form-data">
+            <label>Name</label>
+            <input type="text" name="name" value="{{ student[1] }}" required>
+
+            <label>Branch</label>
+            <input type="text" name="branch" value="{{ student[2] }}" required>
+
+            <label>Enrollment</label>
+            <input type="text" name="enrollment" value="{{ student[4] }}" required>
+
+            <label>Current Photo</label><br>
+            <img src="{{ url_for('static', filename='uploads/' + student[3]) }}" width="100"><br><br>
+
+            <label>New Photo</label>
+            <input type="file" name="photo">
+
+            <input type="submit" value="Update Student">
+        </form>
+    </main>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Timetable</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/add_timetable.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1>Add Timetable</h1>
+            <button id="back"><a href="/timetable">Back</a></button>
+        </div>
+    </header>
+
+    <main>
+        <form action="/add_timetable" method="POST">
+            <label>Day</label>
+            <select name="day" required>
+                <option value="">Select Day</option>
+                <option>Monday</option>
+                <option>Tuesday</option>
+                <option>Wednesday</option>
+                <option>Thursday</option>
+                <option>Friday</option>
+                <option>Saturday</option>
+                <option>Sunday</option>
+            </select>
+
+            <label>Subject</label>
+            <input type="text" name="subject" required>
+
+            <label>Start Time</label>
+            <input type="time" name="start_time" required>
+
+            <label>End Time</label>
+            <input type="time" name="end_time" required>
+
+            <label>Branch</label>
+            <input type="text" name="branch" required>
+
+            <input type="submit" value="Add Timetable">
+        </form>
+    </main>
+</body>
+</html>

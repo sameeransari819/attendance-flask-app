@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/index.css') }}">
+
+    <title>Home</title>
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1><a href="/">HOME</a></h1>
+            <button id="login"><a href="/login">Login</a></button>            
+        </div>
+    </header>
+    <main>
+        <div class="main-btn">
+            <button><a href="/mark">Mark Attendance</a></button>
+            {% if message %}
+                <p style="color:green; font-weight:bold;">{{ message }}</p>
+            {% endif %}
+
+            <button><a href="/view">View Attendance</a></button>
+        </div>
+        
+
+
+        <form action="/add-new" method="POST" enctype="multipart/form-data">
+            <h2>New Student Form</h2><br>
+
+            <label>Name</label>
+            <input type="text" name="name" required>
+
+            <label>Branch</label>
+            <input type="text" name="branch" required>
+
+            <label>Enrollment No</label>
+            <input type="number" name="enrollment" required>
+
+            <label>Photo</label>
+            <input type="file" name="photo" required>
+
+            <input type="submit" placeholder="Submit">
+        </form>
+
+
+        {% if message %}
+            <p style="color:green; font-weight:bold;">{{ message }}</p>
+        {% endif %}
+
+    </main>
+        <!-- ✅ ALERT POPUP CODE (Add here, just before </body>) -->
+    {% if alert %}
+    <script>
+        alert("{{ alert }}");
+    </script>
+    {% endif %}
+</body>
+</html>

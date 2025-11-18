@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Timetable</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/timetable.css') }}">
+</head>
+<body>
+    <header>
+        <div class="header">
+            <h1><a href="/timetable">Class Timetable</a></h1>
+            <button id="back"><a href="/dashboard">Back</a></button>
+        </div>
+    </header>
+
+    <main>
+        <div class="main-btn">
+
+            <button id="add"><a href="/add_timetable">Add New</a></button>
+        
+        </div>
+    </main>
+
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Day</th>
+            <th>Subject</th>
+            <th>Start Time</th>
+            <th>End Time</th>
+            <th>Branch</th>
+            <th>Action</th>
+        </tr>
+
+        {% for t in timetable %}
+        <tr>
+            <td>{{ t[0] }}</td>
+            <td>{{ t[5] }}</td>
+            <td>{{ t[1] }}</td>
+            <td>{{ t[2] }}</td>
+            <td>{{ t[3] }}</td>
+            <td>{{ t[4] }}</td>
+            <td>
+                <a class="edit" href="/edit_timetable/{{ t[0] }}">Edit</a>
+                <br> <hr>
+                <a class="delete" href="/delete_timetable/{{ t[0] }}" onclick="return confirm('Are you sure?')">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
